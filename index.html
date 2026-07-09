@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joanisa Delos Santos | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #fffafc;
+      color: #333333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .nav-logo {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ---------- Navbar ---------- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 18px 40px;
+      border-bottom: 2px solid #f7c6d9;
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d9538a;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333333;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #d9538a;
+    }
+
+    .nav-toggle-checkbox {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 26px;
+      height: 20px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #d9538a;
+      border-radius: 3px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    /* ---------- Sections ---------- */
+    .section {
+      min-height: 100vh;
+      padding: 100px 10% 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      color: #d9538a;
+      text-align: center;
+    }
+
+    .underline {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #d9538a, #f7c6d9);
+      border-radius: 3px;
+      margin: 12px auto 30px;
+    }
+
+        .profile-pic-frame {
+      width: clamp(120px, 22vw, 190px);
+      height: clamp(120px, 22vw, 190px);
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 24px;
+      border: 4px solid #ffffff;
+      box-shadow: 0 10px 28px rgba(217, 83, 138, 0.28), 0 0 0 4px #f7c6d9;
+      background: linear-gradient(135deg, #ffd7e6, #ffe9f1);
+      position: relative;
+      z-index: 1;
+    }
+ 
+    .profile-pic-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* ---------- Home ---------- */
+    .home {
+      text-align: center;
+      align-items: center;
+      background: linear-gradient(160deg, #fff5f8 0%, #ffe3ee 55%, #ffd7e6 100%);
+      position: relative;
+    }
+
+    .home h1 {
+      font-size: 44px;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #d9538a, #c14577, #d9538a);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+
+    .home p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      color: #777777;
+      margin-bottom: 25px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #e06a9a, #c14577);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 16px rgba(217, 83, 138, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(217, 83, 138, 0.4);
+    }
+
+    /* a few small, quiet floating flowers — pure CSS loop, no scroll tricks */
+    .leaf {
+      position: absolute;
+      font-size: 26px;
+      opacity: 0.6;
+      animation: drift 5s ease-in-out infinite;
+    }
+
+    .leaf-1 { top: 18%; left: 8%; animation-delay: 0s; }
+    .leaf-2 { bottom: 22%; right: 10%; animation-delay: 1.5s; font-size: 22px; }
+    .leaf-3 { top: 30%; right: 16%; animation-delay: 0.8s; font-size: 18px; opacity: 0.45; }
+    .leaf-4 { bottom: 30%; left: 14%; animation-delay: 2.2s; font-size: 20px; opacity: 0.4; }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(6deg); }
+    }
+
+    /* ---------- About ---------- */
+    .about-content {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      margin-bottom: 18px;
+    }
+
+    /* ---------- Skills ---------- */
+    .skills {
+      background: linear-gradient(160deg, #fff5f8 0%, #ffe9f1 100%);
+    }
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .skill-card {
+      background-color: #ffffff;
+      border: 1px solid #f7c6d9;
+      border-radius: 10px;
+      padding: 25px;
+      width: 260px;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .skill-card:nth-child(1) { transform: rotate(-2deg); }
+    .skill-card:nth-child(2) { transform: rotate(1.5deg); }
+    .skill-card:nth-child(3) { transform: rotate(-1deg); }
+
+    .skill-card:hover {
+      transform: translateY(-6px) rotate(0deg);
+      box-shadow: 0 12px 22px rgba(217, 83, 138, 0.18);
+    }
+
+    .skill-icon-chip {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffd7e6, #ffe9f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .skill-card h3 {
+      color: #d9538a;
+      margin-bottom: 10px;
+      font-size: 19px;
+    }
+
+    /* ---------- Projects ---------- */
+
+    .section-desc {
+      text-align: center;
+      color: #777777;
+      margin-bottom: 30px;
+    }
+
+    .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 25px;
+    }
+    .project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-link .project-card {
+  cursor: pointer;
+}
+
+.project-link .project-card:hover {
+  transform: translateY(-6px) rotate(0deg);
+  box-shadow: 0 10px 20px rgba(217, 83, 138, 0.18);
+}
+
+    .poem-toggle {
+      display: none;
+    }
+
+    .project-card {
+      position: relative;
+      background-color: #fff0f5;
+      border-left: 4px solid #d9538a;
+      border-radius: 8px;
+      padding: 20px;
+      width: 280px;
+      max-width: 100%;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card:nth-child(2) { transform: rotate(-1.5deg); background-color: #ffe9f1; }
+    .project-card:nth-child(4) { transform: rotate(1.2deg); }
+    .project-card:nth-child(6) { transform: rotate(-1deg); background-color: #ffe4ee; }
+
+    .project-card:hover {
+      transform: translateY(-6px) rotate(0deg);
+      box-shadow: 0 10px 20px rgba(217, 83, 138, 0.18);
+    }
+
+    .project-card h3 {
+      color: #d9538a;
+      margin-bottom: 10px;
+      font-size: 19px;
+      font-style: italic;
+    }
+
+    .poem-wrapper {
+      position: relative;
+      max-height: 140px;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: #4a4a4a;
+    }
+
+    .poem-wrapper::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255, 240, 245, 0), #fff0f5);
+      transition: opacity 0.3s ease;
+    }
+
+    .see-more-btn {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      margin-top: 14px;
+      color: #d9538a;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .see-more-btn:hover {
+      text-decoration: underline;
+    }
+
+    .see-more-btn .txt-less {
+      display: none;
+    }
+
+    .card-collapse-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .poem-toggle:checked + .project-card .poem-wrapper {
+      max-height: 3000px;
+    }
+
+    .poem-toggle:checked + .project-card .poem-wrapper::after {
+      opacity: 0;
+    }
+
+    .poem-toggle:checked + .project-card .see-more-btn .txt-more {
+      display: none;
+    }
+
+    .poem-toggle:checked + .project-card .see-more-btn .txt-less {
+      display: inline;
+    }
+
+    .poem-toggle:checked + .project-card .card-collapse-overlay {
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      text-align: center;
+      align-items: center;
+      background: linear-gradient(160deg, #fff5f8 0%, #ffe9f1 100%);
+    }
+
+    .contact p {
+      margin-bottom: 8px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      border-top: 2px solid #f7c6d9;
+      color: #777777;
+      font-size: 14px;
+    }
+
+    /* ---------- Tablet ---------- */
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 16px 24px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        height: 100vh;
+        width: 260px;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 90px 30px 30px;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+        transition: right 0.35s ease;
+        z-index: 1100;
+      }
+
+      .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid #f7c6d9;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 16px 0;
+        font-size: 18px;
+      }
+
+      .nav-toggle-checkbox:checked ~ .nav-links {
+        right: 0;
+      }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1050;
+      }
+
+      .nav-toggle-checkbox:checked ~ .nav-overlay {
+        display: block;
+      }
+
+      .nav-toggle-checkbox:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+      }
+
+      .nav-toggle-checkbox:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav-toggle-checkbox:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+      }
+
+      .section {
+        padding: 90px 6% 50px;
+      }
+
+      .home h1 {
+        font-size: 34px;
+      }
+    }
+
+    /* ---------- Phone ---------- */
+    @media (max-width: 600px) {
+      .navbar {
+        padding: 14px 18px;
+      }
+
+      .nav-logo {
+        font-size: 20px;
+      }
+
+      .nav-links {
+        width: 80vw;
+        max-width: 280px;
+        right: -85vw;
+      }
+
+      .section {
+        padding: 80px 5% 45px;
+        min-height: auto;
+      }
+
+      .home {
+        min-height: 100vh;
+        padding-top: 110px;
+      }
+
+      .home h1 {
+        font-size: 28px;
+      }
+
+      .home p {
+        font-size: 16px;
+      }
+
+      .skill-card,
+      .project-card {
+        transform: none !important;
+      }
+
+      .section h2 {
+        font-size: 26px;
+      }
+
+      .skill-card {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .project-card {
+        width: 100%;
+        max-width: 340px;
+      }
+
+
+      .btn {
+        padding: 10px 22px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo">Joanisa</div>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <label for="nav-toggle" class="nav-overlay"></label>
+  </nav>
+
+  <section id="home" class="section home">
+    <span class="leaf leaf-1">🌸</span>
+    <span class="leaf leaf-2">🌸</span>
+    <span class="leaf leaf-3">🌸</span>
+    <span class="leaf leaf-4">🌸</span>
+
+        <div class="profile-pic-frame">
+      <img src="74a24441-b3af-42be-be3f-ddaebc4c7ebf.jpg">
+    </div>
+
+    <h1>Welcome to my Portfolio</h1>
+    <p>Hi, I'm Joanisa Delos Santos.</p>
+    <p class="subtext">3rd Year Computer Science Student | CSU Carig Campus, Isabela</p>
+
+    <a href="#about" class="btn">Learn more about me</a>
+  </section>
+
+  <section id="about" class="section about">
+    <h2>About Me</h2>
+    <div class="underline"></div>
+    <div class="about-content">
+      <p>
+        Hello! My name is <b>Joanisa Delos Santos</b>. I am a 3rd year Computer Science
+        student at Cagayan State University, Carig Campus. I currently live in Santa Maria,
+        Isabela.
+      </p>
+      <p>
+        Aside from studying computer science, I enjoy writing and creating stories.
+        I like combining the logic from coding with the creativity of writing, and
+        I believe both sides help me grow as a student and as a person.
+      </p>
+      <p>
+        I'm still learning and improving every day, and this portfolio is a small
+        space where I share a bit of what I do.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" class="section skills">
+    <h2>My Skills</h2>
+    <div class="underline"></div>
+    <div class="skills-container">
+      <div class="skill-card">
+        <div class="skill-icon-chip">💻</div>
+        <h3>Coding</h3>
+        <p>I enjoy solving problems through code and learning new programming languages as a CS student.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon-chip">✍️</div>
+        <h3>Writing</h3>
+        <p>I like expressing my thoughts and ideas through writing, from simple journal entries to short pieces.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon-chip">📖</div>
+        <h3>Making Stories</h3>
+        <p>I enjoy creating stories and poems, using creativity as a way to express myself.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section projects">
+    <h2>My Projects</h2>
+    <div class="underline"></div>
+    <p class="section-desc">Here are some of the poems I've written.</p>
+    <div class="projects-container">
+        <div class="project-card">
+    <h3>Portfolio Website</h3>
+
+    <p>
+        A responsive portfolio website built using HTML and CSS.
+        It showcases my profile, skills, projects, and creative
+        writing in a clean and mobile-friendly design.
+    </p>
+
+    <a href="https://github.com/delossantosjoanisa/jdelossantos"
+       target="_blank"
+       class="btn"
+       style="margin-top:15px;">
+        View Repository
+    </a>
+</div>
+
+<div class="project-card">
+    <h3>UPC smart Validator</h3>
+
+    <p>
+        It is used to decode and verify UPC barcodes, generate UPC barcodes, and validate whether a UPC number is correct.
+    </p>
+
+    <a href="https://github.com/delossantosjoanisa/UPC-SMART-VALIDATOR--A-Real-Time-Barcode-Checker-and-Decoder"
+       target="_blank"
+       class="btn"
+       style="margin-top:15px;">
+        View Repository
+    </a>
+</div>
+
+      <input type="checkbox" id="poem1" class="poem-toggle">
+      <div class="project-card">
+        
+        <label for="poem1" class="card-collapse-overlay"></label>
+        <h3>Peaceful Chaos</h3>
+        <div class="poem-wrapper">
+          <p>
+          Blood shed in a battle field <br>
+          Cries echo in silent tears <br>
+          Eyes lock on ceilings <br>
+          Life coming out of veins <br>
+          <br>
+          Fingers trying to move <br>
+          Brain standing on a roof <br>
+          Calmness was never on foot <br>
+          So jump little worthless wolf <br>
+          </p>
+        </div>
+        <label for="poem1" class="see-more-btn">
+          <span class="txt-more">See more</span>
+          <span class="txt-less">See less</span>
+        </label>
+      </div>
+
+      <input type="checkbox" id="poem2" class="poem-toggle">
+      <div class="project-card">
+        <label for="poem2" class="card-collapse-overlay"></label>
+        <h3>Nilisang Katapatan</h3>
+        <div class="poem-wrapper">
+          <p>
+          Ikaw ang siyang laging pipiliin <br>
+          Sapagkat ipinangakong walang ibang makakapiling <br>
+          Dahil hanggat walang rason na ika’y lilisanin <br>
+          Sasamahan ka hanggat tayo’y mailibing <br>
+          <br>
+          Huwag lamang akong bigyan ng rason <br>
+          Na pag-ibig mong laan ay itatapon <br>
+          Dahil oras na magkagayon <br>
+          Ako’y lalayo ng hindi lumilingon <br>
+          <br>
+          Ikaw ang lalaking unang pinayagan <br>
+          Na sa akin ay magkaroon ng karapatan <br>
+          Nawa ang bawat oras na sa iyo’y inilalaan <br>
+          Ay hindi magwawakas sa isang katapusan <br>
+          <br>
+          Nais kong manatili ang iyong katapatan br 
+          Hanggang sa ang buhay ay babawiin na ng nasa kaitaasan <br>
+          Minamahal ka ng lubusan <br>
+          Iyan ay iyong pakatatandaan <br>
+          <br>
+          Sa mga nais mo’y hindi ka paghihigpitan <br>
+          Nais kong iparating sa iyo, sa lahat ng bagay ika’y susuportahan <br>
+          Nawa’y ito’y hindi mo pagsasamantalahan <br>
+          Para lamang ang nais mo’y maisakatuparan <br>
+          </p>
+        </div>
+        <label for="poem2" class="see-more-btn">
+          <span class="txt-more">See more</span>
+          <span class="txt-less">See less</span>
+        </label>
+      </div>
+
+      <input type="checkbox" id="poem3" class="poem-toggle">
+      <div class="project-card">
+        <label for="poem3" class="card-collapse-overlay"></label>
+        <h3>Hoy Vie</h3>
+        <div class="poem-wrapper">
+          <p>
+          Kung hindi ito. <br>
+          Sana'y hindi ganito. <br>
+          Kung ang ako ay hindi para sayo. <br>
+          Sana'y magwakas na ang panandaliang ito. <br>
+          <br>
+          Hindi ko nais magbukas ng pahina. <br>
+          Na pighati ang nilalaman ng bawat talata. <br>
+          Ayokong magbasa ng mga masasakit na kataga. <br>
+          Na maaaring sa bawat sulok ng puso ay magmamarka. <br>
+          <br>
+          Kung ito'y hindi katumbas ng kariktan. <br>
+          Ano pa ang silbi ng bawat gabing inilalaan? <br>
+          Kung ito'y hindi nagmula sa iyong kapangyarihan. <br>
+          O Bathala, hindi ba't mas mainam na wakasan ang nasimulan? <br>
+          <br>
+          Hindi nababalutan ng pait yaring puso. <br>
+          Sadyang sa maraming bagay, ako'y natuto. <br>
+          Subalit hindi sapat upang malaman ang iyong motibo. <br>
+          Sapagkat ang lahat ay tila moderno at ang kabanata ay nabago. <br>
+          <br>
+          Siya'y isang kaklaseng hinahangaan. <br>
+          Natutunaw itong puso sa isang tingin lamang. <br>
+          Anong rupok nitong pader na aking inilaan. <br>
+          Laban sa pag-ibig na posibleng daraan. <br>
+          <br>
+          Paano sasabihin yaring nararamdaman? <br>
+          Kung ang bibig ay hindi mautusan? <br>
+          Subalit bawat oras nabibigkas kanyang pangalan. <br>
+          Mark Arvie Cabildo Bulusan. <br>
+          <br>
+          Pintig ng puso'y bumibilis, <br>
+          Sa bawat pagkakataong siya'y sumasagi sa isip. <br>
+          Napapalitan ng tuwa itong pagkainip, <br>
+          Sa bawat minutong siya'y nahahagip. <br>
+          <br>
+          Hindi na maiwaksi sa isipan. <br>
+          Ang hinulmang kagandahan. <br>
+          Sana'y magkaroon ng tamang daan. <br>
+          Upang kanya itong malaman. <br>
+          <br>
+          Ano kaya sa pakiramdam, <br>
+          Kung kanyang bisig ay gagawing sandalan? <br>
+          Kung siya ay katabi sa higaan? <br>
+          Kung siya ay saakin nakalaan? <br>
+          <br>
+          Umiibig na nga itong puso. <br>
+          Sa isang may kayabangang tao. <br>
+          Hanggang kailan kaya ito? <br>
+          May pagkakataon bang maglaho? <br>
+          <br>
+          Nawa'y nasa iisang pahina lamang, <br>
+          Ang aming nararamdaman, <br>
+          Sapagkat nilulunod na ng karagatan <br>
+          Ang tulad kong nasasaktan ng walang karapatan. <br>
+          <br>
+          Isa pang katangian, <br>
+          Ang labis kong nagustuhan. <br>
+          Sa kanyang mukha ay may biloy na hindi kalaliman. <br>
+          Subalit kapag siya'y ngumiti ay kaysarap pagmasdan. <br>
+          <br>
+          Kay sarap niyang maging paksa <br>
+          Para sa isang magandang tula. <br>
+          Maubos man ang mga salita. <br>
+          Basta't siya ang laman ng bawat talata. <br>
+          <br>
+          Sa kaitasan, isa lamang ang panalangin. <br>
+          Gabayan ang puso ng batang mataas ang hangarin. <br>
+          Ilayo sa tukso ng mapanlinlang damdamin. <br>
+          Pakinggan nawa itong munting hiling. <br>
+          </p>
+        </div>
+        <label for="poem3" class="see-more-btn">
+          <span class="txt-more">See more</span>
+          <span class="txt-less">See less</span>
+        </label>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <h2>Contact</h2>
+    <div class="underline"></div>
+    <p>Email: joanisa.delossantos@email.com</p>
+    <p>Location: Isabela, Philippines</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Joanisa Delos Santos. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
