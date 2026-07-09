@@ -25,11 +25,22 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, .nav-logo {
+    h1 {
       font-family: 'Playfair Display', serif;
     }
 
-    /* ---------- Navbar ---------- */
+    h2{
+      
+      font-family: 'Playfair Display', serif;
+    }
+    h3 {
+      font-family: 'Playfair Display', serif;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+    }
+    
+
     .navbar {
       position: fixed;
       top: 0;
@@ -90,8 +101,6 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
       pointer-events: none;
     }
-
-    /* ---------- Sections ---------- */
     .section {
       min-height: 100vh;
       padding: 100px 10% 60px;
@@ -135,7 +144,6 @@
       display: block;
     }
 
-    /* ---------- Home ---------- */
     .home {
       text-align: center;
       align-items: center;
@@ -187,7 +195,6 @@
       box-shadow: 0 10px 22px rgba(217, 83, 138, 0.4);
     }
 
-    /* a few small, quiet floating flowers — pure CSS loop, no scroll tricks */
     .leaf {
       position: absolute;
       font-size: 26px;
@@ -195,17 +202,39 @@
       animation: drift 5s ease-in-out infinite;
     }
 
-    .leaf-1 { top: 18%; left: 8%; animation-delay: 0s; }
-    .leaf-2 { bottom: 22%; right: 10%; animation-delay: 1.5s; font-size: 22px; }
-    .leaf-3 { top: 30%; right: 16%; animation-delay: 0.8s; font-size: 18px; opacity: 0.45; }
-    .leaf-4 { bottom: 30%; left: 14%; animation-delay: 2.2s; font-size: 20px; opacity: 0.4; }
+    .leaf-1 {
+      top: 18%; 
+      left: 8%; 
+      animation-delay: 0s;
+    }
+    .leaf-2 { 
+      bottom: 22%; 
+      right: 10%; 
+      animation-delay: 1.5s; 
+      font-size: 22px;
+    }
+    .leaf-3 {
+      top: 30%; 
+      right: 16%; 
+      animation-delay: 0.8s; 
+      font-size: 18px; 
+      opacity: 0.45; }
+    .leaf-4 {
+      bottom: 30%; 
+      left: 14%; 
+      animation-delay: 2.2s; 
+      font-size: 20px; 
+      opacity: 0.4; }
 
     @keyframes drift {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(6deg); }
+      0%, 100% { 
+        transform: translateY(0) rotate(0deg); 
+      }
+      50% { 
+        transform: translateY(-12px) rotate(6deg); 
+      }
     }
 
-    /* ---------- About ---------- */
     .about-content {
       max-width: 680px;
       margin: 0 auto;
@@ -216,7 +245,6 @@
       margin-bottom: 18px;
     }
 
-    /* ---------- Skills ---------- */
     .skills {
       background: linear-gradient(160deg, #fff5f8 0%, #ffe9f1 100%);
     }
@@ -238,9 +266,15 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .skill-card:nth-child(1) { transform: rotate(-2deg); }
-    .skill-card:nth-child(2) { transform: rotate(1.5deg); }
-    .skill-card:nth-child(3) { transform: rotate(-1deg); }
+    .skill-card:nth-child(1) {
+      transform: rotate(-2deg);
+    }
+    .skill-card:nth-child(2) { 
+      transform: rotate(1.5deg);
+    }
+    .skill-card:nth-child(3) {
+      transform: rotate(-1deg);
+    }
 
     .skill-card:hover {
       transform: translateY(-6px) rotate(0deg);
@@ -265,7 +299,6 @@
       font-size: 19px;
     }
 
-    /* ---------- Projects ---------- */
 
     .section-desc {
       text-align: center;
@@ -310,9 +343,17 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .project-card:nth-child(2) { transform: rotate(-1.5deg); background-color: #ffe9f1; }
-    .project-card:nth-child(4) { transform: rotate(1.2deg); }
-    .project-card:nth-child(6) { transform: rotate(-1deg); background-color: #ffe4ee; }
+    .project-card:nth-child(2) {
+      transform: rotate(-1.5deg); 
+      background-color: #ffe9f1; 
+    }
+    .project-card:nth-child(4) {
+      transform: rotate(1.2deg);
+    }
+    .project-card:nth-child(6) {
+      transform: rotate(-1deg);
+      background-color: #ffe4ee;
+    }
 
     .project-card:hover {
       transform: translateY(-6px) rotate(0deg);
@@ -396,7 +437,6 @@
       cursor: pointer;
     }
 
-    /* ---------- Contact ---------- */
     .contact {
       text-align: center;
       align-items: center;
@@ -418,7 +458,6 @@
       font-size: 14px;
     }
 
-    /* ---------- Tablet ---------- */
     @media (max-width: 900px) {
       .navbar {
         padding: 16px 24px;
@@ -492,7 +531,6 @@
       }
     }
 
-    /* ---------- Phone ---------- */
     @media (max-width: 600px) {
       .navbar {
         padding: 14px 18px;
