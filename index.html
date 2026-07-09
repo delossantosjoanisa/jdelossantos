@@ -90,6 +90,8 @@
       height: 20px;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
+      position: relative;
+  z-index: 1200;
     }
 
     .hamburger span {
@@ -583,6 +585,9 @@
         max-width: 340px;
       }
 
+      .hamburger span{
+        transform-origin: center;
+    }
 
       .btn {
         padding: 10px 22px;
@@ -597,7 +602,11 @@
     <div class="nav-logo">Joanisa</div>
 
     <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
-
+      <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About Me</a></li>
@@ -606,11 +615,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <label for="nav-toggle" class="hamburger" aria-label="Toggle navigation menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
 
     <label for="nav-toggle" class="nav-overlay"></label>
   </nav>
